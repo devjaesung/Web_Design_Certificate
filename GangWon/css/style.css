@@ -1,0 +1,231 @@
+/*기본설정*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  border: none;
+}
+img:hover{
+  opacity: 0.7;
+}
+
+/*layout*/
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+/*header*/
+header {
+  width: 100%;
+  height: 100px;
+}
+header > a {
+  float: left;
+  width: 250px;
+  height: 40px;
+  margin-top: 30px; /*글자 세로 가운데 정렬, heigth + margin*2 = 전체 높이 */
+}
+nav {
+  float: right;
+  width: 600px;
+  height: 40px;
+  margin-top: 30px; /*글자 세로 가운데 정렬 */
+}
+nav > ul > li {
+  float: left; /*메인메뉴들 수평 나열 처리*/
+  width: 150px;
+  height: 40px;
+  text-align: center; line-height: 40px; /*글자 가로세로 정렬*/
+  position: relative; /*하위메뉴들의 기준으로 설정함*/
+}
+nav > ul > li:hover .gnb { /*메인메뉴 hover시 색상변경*/
+  background-color: #0066ad;
+  color: #fff;
+}
+.gnb{ /*gnb 영역 설정*/
+  display: block;
+  width: 100%; height: 100%; /*gnb의 영역을 넓혀줌*/
+  font-size: 18px;
+  font-weight: bold;
+}
+.lnb{ 
+  position: absolute; top: 40px; /*lnb의 위치 설정*/
+  z-index: 999;
+  width: 100%; height: 120px; /*lnb의 전체 영역 설정*/
+  background-color: #fff; /*배경색을 줘서 hover되면 슬라이더 영역을 가릴 수 있게 함*/
+}
+.lnb li{
+  width: 100%; height: 40px; /*서브메뉴 각각의 영역 설정*/
+  text-align: center; line-height: 40px; /*글자 가로세로 가운데 처리*/
+}
+.lnb li a{
+  display: block; width: 100%; height: 100%; /*hover되는 영역 설정*/
+  font-size: 14px;
+}
+.lnb li a:hover{ /*lnb hover시 색상변경*/
+  background-color: #30a3f3; color: #fff; 
+}
+
+/*section*/
+section {
+  width: 100%;
+  height: 500px;
+}
+/*slide*/
+.slide{
+  width: 100%; height: 300px; /*slide영역 설정*/
+  position: relative; /*slide를 기준으로 위치설정*/
+}
+.slide img{ /*이미지가 slide안에 하나로 겹쳐지게 설정*/
+  position: absolute; 
+  top: 0;
+  left: 0;
+}
+/*board*/
+.board{
+  float: left; /*board영역을 왼쪽으로 위치시킴*/
+  width: 400px; height: 200px; /*영역 설정*/
+  padding: 0 20px; /*가로 여백*/
+}
+.board .tab{
+  width: 100%; height: 50px; /*탭메뉴 전체 영역 설정*/
+  border-bottom: 1px solid #999;
+}
+.board .tab li{
+  float: left; /*notice, gallery 탭을 수평 나열 처리*/
+  margin: 0 10px; /*가로 여백*/
+  height: 100%;
+  line-height: 50px; /*세로 가운데 위치*/
+}
+.board .tab li a{
+  display: block; width: 100%; height: 100%; /*hover되는 영역 설정*/
+  font-size: 18px; font-weight: bold; color: #999; /*폰트 설정*/
+}
+
+.board .tab li.active a{ /*탭이 active되면 글자색과 테두리 지정*/
+  color: #222328;
+  border-bottom: 3px solid #222328;
+}
+.board .tab li:first-child{
+  margin-left: 0; /*첫번째 요소 왼쪽 여백 없앰*/
+}
+
+.board .contents{
+  width: 100%; height: 150px; /*컨텐츠 요소 영역 설정*/
+}
+.contents > div{
+  display: none; /*컨텐츠 내용 안보이게 처리 후 제이쿼리에서 보이게 처리*/
+}
+/*notice*/
+.notice{
+  width: 100%; height: 150px; /*공지사항 영역 설정*/
+}
+.notice li{
+  width: 100%; height: 30px; /*리스트 한개당 영역 설정*/
+  line-height: 30px; /*세로 가운데 처리*/
+  font-size: 12px;
+}
+.notice li a{
+  float: left; /*글자 왼쪽에 위치*/
+  /*li 전체의 가로폭 : 400px - 40px(padding) = 360px 확인하기*/
+  display: block; width: 290px; height: 30px; 
+  padding-left: 10px;
+  font-size: 12px;
+}
+.notice li .date{
+  float: right; /*날짜 오른쪽에 위치*/
+  display: block; width: 70px; height: 30px;
+  padding-right: 10px;
+  font-size: 12px;
+  text-align: right;
+}
+
+/*gallery*/
+.gallery{
+  width: 100%; height: 150px; /*갤러리 영역 설정*/
+}
+.gallery .imgbox{
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+/*banner&now*/
+.banner,.now{
+  float: left; /*banner와 now를 수평 나열 처리*/
+  display: flex; /*flex로 이미지 정렬*/
+  align-items: center;
+  width: 400px; height: 200px;
+}
+.banner{
+  justify-content: start;/*banner는 왼쪽으로*/
+}
+.now{
+  justify-content: end;/*now는 오른쪽으로*/
+}
+
+.banner img,.now img{ /*이미지 사이즈 조정해서 여백 만듬*/
+  width: 390px; height: 180px;
+}
+
+/*footer*/
+footer{
+  width: 100%; height: 100px;
+  background-color: #333;
+}
+footer .fLogo{ /*로고 위치 및 영역 설정*/
+  float: left;
+  width: 250px; height: 40px;
+  margin-top: 30px; /*세로 가운데 정렬*/
+}
+.fMenu{
+  width: 950px; height: 100px;
+  display: flex; /*하단메뉴와 카피라이트 정렬*/
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.subMenu{
+  display: flex; /*하단메뉴1,2,3 정렬*/
+  width: 300px;
+  justify-content: space-between;
+}
+.subMenu a,.copyRight p{
+  color: #fff;
+}
+
+/*popup*/
+.popup{
+  width: 300px; height: 220px; /*팝업영역 설정*/
+  position: absolute; /*화면의 가운데에 오도록 처리함*/
+  left: 0; right: 0; margin: 0 auto;
+  top: 300px;
+  z-index: 888;
+  border: 1px solid #999;
+  padding: 20px;
+  background-color: #fff;
+}
+.popup h2{
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.popup p{
+  font-size: 12px;
+  color: #666;
+}
+.popup a{
+  display: block;
+  font-size: 12px;
+  text-align: right;
+}
